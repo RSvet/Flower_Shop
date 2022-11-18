@@ -1,0 +1,32 @@
+
+ <nav class="navbar bg-light navbar-expand-lg pt-1 pb-1 top-0 col-12">
+    <div class="container ">                   
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" 
+            data-bs-target="#navbarMenuOptions" aria-controls="navbarMenuOptions" aria-expanded="false"
+            aria-label="Toggle navigation"><fa-icon [icon]="faBars" id="bars-icon"></fa-icon>
+        </button>
+        <div  class="collapse navbar-collapse" id="navbarMenuOptions">            
+            <div class="home-icon"><img class="navbar-brand" src="/assets/flowerLogo.png" alt="flower-icon" id="flower-icon"/></div>
+            <ul class="navbar-nav col-12 col-md-auto m-auto">
+                <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
+                    <a class="nav-link" routerLink="/">Home</a>
+                </li>
+                <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
+                    <a class="nav-link" href="">About</a>
+                </li>
+                <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
+                    <a class="nav-link" [routerLink]="['/shop', 'sympathy']">Shop</a>                            
+                </li>
+                <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
+                    <a class="nav-link link-secondary" href="">Contact</a>                            
+                </li>
+            </ul>               
+        </div>
+        <div>           
+            <fa-icon [icon]="faCircleUser" id="user-icon"></fa-icon>
+            <fa-icon [icon]="faCaretDown" id="arrow-down"></fa-icon>
+            <fa-icon [icon]="faCartShopping" class="position-relative" id="shopping-cart"></fa-icon>
+            <span class="position-absolute top-5 translate-middle align-middle bg-secondary border border-light rounded-circle cart-badge">1</span>
+        </div>
+    </div>
+</nav> 

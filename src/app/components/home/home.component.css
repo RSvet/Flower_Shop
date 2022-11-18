@@ -1,0 +1,133 @@
+#home-flower{
+    background-image: url('/assets/flowerBackground1.jpg');
+    background-position: center;
+    background-size: cover;
+    min-height: 700px; 
+    padding-right: 60px;
+    
+}
+h1{
+    font-size: 45px;
+}
+#bring{
+    font-size: 17px;
+}
+
+h2{
+    font-size: 30px;
+}
+
+#home_about{
+    font-size: 18px;
+    
+}
+
+.shop-item{
+    text-decoration: none;
+    color: black;
+    
+}
+.load{
+   width: 120px;
+}
+
+#business-info{
+    gap: 40px;
+   
+}
+
+.form-control{
+    border:none;
+    border-bottom: 1px solid black;
+    border-radius: 0;    
+    box-shadow: white!important;    
+}
+
+.form-control:focus{
+    box-shadow: 0 0 0 0.25rem rgb(255 255 255);
+   
+}
+
+.send-btn{
+    width: 60px;
+}
+
+.wishes-part{
+    min-height:fit-content;
+    
+}
+.offer-part{
+    min-height: 500px;
+    background-color: rgb(254,174,184);
+    color:white;
+}
+
+#well-wish{
+    font-size: 18px;
+}
+.bouquet-part{
+    min-height: 500px;
+    background-image: url('/assets/FTD_SplitBanner_Merx_1.png');
+    background-position: center;
+    background-size: cover;
+}
+.shop-button{
+    border-radius: 30px;
+    padding:0 12px;
+    font-size: 14px;   
+}
+
+@media (max-width: 992px){   
+    h1 {
+        font-size: 35px;
+    }
+    #bring{
+        font-size: 15px;
+    }
+    .shop1-btn{
+        width: 132px;
+        font-size: 0.9rem;
+    }
+    #home_about{
+        font-size: 16px;
+    }
+    .price{
+        font-size: 18px!important;
+    }
+    .img-fluid{
+        width: 306px;
+        height: auto;   
+    }
+    h2{
+        font-size: 28px;
+    }    
+    
+}
+@media (max-width: 768px){   
+    h1 {
+        font-size: 30px;
+    }
+    #bring{
+        font-size: 15px;
+    }
+    .shop1-btn{
+        width: 125px;
+        font-size: 0.8rem;
+    }
+     #home_about{
+        font-size: 14px;
+    }
+
+    .price{
+        font-size: 16px!important;
+    }
+
+    .img-fluid{
+        width: 300px;
+        height: auto;   
+    }
+    h2{
+        font-size: 26px;
+    }    
+
+}

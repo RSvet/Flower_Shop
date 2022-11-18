@@ -1,0 +1,29 @@
+
+#flower-icon {
+    width: 100px;
+    height: auto;    
+}
+/* .shop-link{
+    color: rgb(27, 27, 27);
+} */
+#user-icon {
+    font-size: 20px;
+    margin-right: 6px;
+    
+}
+#arrow-down{
+    font-size: 15px;
+    margin-right: 6px;
+}
+#shopping-cart {
+    font-size: 18px;
+}
+.cart-badge{
+    height: 20px;
+    width: 20px;
+    font-size: 10px;
+    text-align: center;
+    color:white;
+    font-weight: bold;
+    
+}
