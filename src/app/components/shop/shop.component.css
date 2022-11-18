@@ -1,0 +1,32 @@
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+img{
+    width: 50%;
+    height: auto;
+    border-bottom: pink 2px solid; 
+}
+
+
+
+@media (max-width: 768px){ 
+    img{
+        width: 80%;
+        height: auto;
+        border: none;
+    }
+    .cat-div{
+        border-bottom: pink 2px solid; 
+        font-size: 12px;
+        
+    }
+}
+
+@media (max-width: 340px){
+    .cat-div{
+        font-size: 10px;
+    }
+}

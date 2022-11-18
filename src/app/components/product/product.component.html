@@ -1,0 +1,38 @@
+<div class="container">
+    <div class="row d-flex justify-content-center main-div" *ngFor="let product of productBy">
+      <div class="row d-flex">
+          <div aria-label="breadcrumb" class="col-lg-6 col-md-8">
+            <ol class="breadcrumb p-0 m-3">
+              <li class="breadcrumb-item p-0">Home</li>
+              <li class="breadcrumb-item p-0">Shop</li>
+              <li class="breadcrumb-item p-0">{{product.category}}</li>
+              <li class="breadcrumb-item p-0" aria-current="page">{{product.name}}</li>
+            </ol>
+          </div>
+          <div class="col-lg-6 col-md-4 d-flex justify-content-end p-lg-0 mt-lg-3 mb-3">            
+            <button class="prev-next" (click)="LoadPrevious(product.id, product.category)">&#60; Prev</button>            
+            <span>|</span>            
+            <button class="prev-next" (click)="LoadNext(product.id, product.category)" >Next &#x3e;</button>            
+          </div>
+      </div>  
+      <div class="row">
+        <div class="img-div col-lg-6 justify-content-lg-end justify-content-center mb-4 mb-lg-0 d-flex">
+            <img class="img-fluid" src={{product.image}} alt=""/>            
+        </div>
+      
+        <div class="col-lg-6">
+            <div class="mt-2">
+            <p class="name fs-4">{{product.name}}</p>
+            <p class="price fs-4">{{product.price}}$</p>
+            <p class="description">{{product.description}}</p> 
+          </div> 
+            <hr>
+            <p class="mb-0 pb-1">Quantity</p>
+            <input class="mb-2 border rounded-1" type="number" min="0" #quantity> <br>
+            <button class="btn btn-dark add-cart" (click)="addToCart(quantity.value, product.id)">Add to cart</button>           
+        </div>
+      </div>  
+    </div>
+    <div class="row second-row"></div>
+    
+</div>

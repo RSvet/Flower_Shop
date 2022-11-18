@@ -1,0 +1,33 @@
+.second-row{
+    min-height: 45vh;
+}
+
+.breadcrumb-item+.breadcrumb-item::before{
+    padding:0;
+}
+
+.name .price{
+    font-weight: 500;
+}
+
+
+input{
+    width: 90px;
+    height: 30px;    
+}
+
+.add-cart{
+    font-size: 14px;
+}
+
+.prev-next{
+    padding: none;
+    border: none;
+    background-color: transparent;
+    width: fit-content;
+    height: fit-content;
+}
+
+.description{
+    font-size: 13px;
+}
