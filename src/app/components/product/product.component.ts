@@ -8,14 +8,14 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-product',
   templateUrl: './product.component.html',
-  styleUrls: ['./product.component.css'],
-  providers: [ProductService, ShoppingService],
+  styleUrls: ['./product.component.css']
   
 })
 export class ProductComponent implements OnInit {
   productBy: {id:number, name:string, price: number, category: string, image: string, description: string}[]=[];  
   currentProd:{id:number, name:string, price: number, category: string, image: string, description: string}
-
+  quantityField = "";
+  message = "";
   constructor(private route: ActivatedRoute, private productService: ProductService, private shoppingService: ShoppingService, private router: Router, ) 
   { }
 
@@ -25,10 +25,12 @@ export class ProductComponent implements OnInit {
       (params: Params) => {
         this.routeChanged(params['id']);
       }      
-    )     
+    )  
+    
   }  
   routeChanged(id: number){
-    this.productBy = this.productService.getProductbyId(id);   
+    this.productBy = this.productService.getProductbyId(id);  
+    this.currentProd = this.productService.getProductbyId(id)[0];    
   }
 
   LoadPrevious(id: number, category:string){    
@@ -45,9 +47,20 @@ export class ProductComponent implements OnInit {
   }
 
   addToCart(quantity: string, id:number){
-    this.currentProd = this.productService.getProductbyId(id)[0];   
-    this.shoppingService.add(this.currentProd, +quantity)
+    if(+quantity<=0){
+      this.message = "Ordered quantity must be over 0."
+      
+    }
+    else{
+    this.shoppingService.add(this.currentProd, +quantity);
+    this.message = ""
+    }
+    this.quantityField = "";
   }
+
+
+ 
+
 
 
 

@@ -8,7 +8,7 @@ import { ProductService } from 'src/app/services/product.service';
   selector: 'app-shop',
   templateUrl: './shop.component.html',
   styleUrls: ['./shop.component.css'],  
-  providers: [ProductService]
+  
 })
 export class ShopComponent implements OnInit {
   

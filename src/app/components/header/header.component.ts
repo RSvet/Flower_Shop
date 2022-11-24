@@ -4,11 +4,16 @@ import {faUser} from '@fortawesome/free-solid-svg-icons'
 import {faCaretDown} from  '@fortawesome/free-solid-svg-icons'
 import {faCircleUser} from '@fortawesome/free-solid-svg-icons'
 import {faBars} from '@fortawesome/free-solid-svg-icons'
+import { ShoppingService } from 'src/app/services/shopping.service';
+import { Cart } from '../models/Cart';
+
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.css']
+  styleUrls: ['./header.component.css'],
+  
 })
+
 export class HeaderComponent implements OnInit {
   faCartShopping = faCartShopping;
   faUser = faUser;
@@ -16,10 +21,14 @@ export class HeaderComponent implements OnInit {
   faCircleUser = faCircleUser;
   faBars = faBars;
   public isMenuCollapsed = true;
-  constructor() {    
+  
+  constructor(public shoppingService:ShoppingService) {    
   }
 
-  ngOnInit(): void {
-  }
+ 
 
+  ngOnInit(): void { 
+   
+  }
 }
+ 

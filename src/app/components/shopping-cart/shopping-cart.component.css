@@ -1,0 +1,31 @@
+.shop-cart-empty{
+    height: 89vh;   
+}
+.remove-product{
+    border: none;
+    background-color: white;
+}
+.cart-container{
+    min-height: 84vh;
+}
+input{
+    width: 40px;
+}
+h1{
+    font-weight: 500;
+    font-size: 35px!important;
+}
+
+
+@media (max-width: 992px){
+    .shop-cart-empty{
+        height: 92vh;
+    }
+}
+
+@media (max-width: 576px){
+    h1{
+        font-size: 25px!important;
+    }
+}
+

@@ -1,0 +1,40 @@
+<div class="container form-holder d-flex justify-content-center pt-5">
+    
+        <div class="col-lg-3 col-md-5 col-7 mt-5 pt-4">
+            <div class="mb-4">
+                <h1 class="text-center login-text mt-5 mb-1">Log In</h1>
+                <p class="text-center signup-text">New to this site? <a [routerLink]="['/signup']">Sign Up</a></p>
+            </div>    
+            <form (ngSubmit)="onSubmit()" #loginForm ='ngForm'>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" class="form-control rounded-1 mb-1" ngModel name="email"
+                    required email #email="ngModel">
+                   
+                    <span class="help-block" *ngIf="email.touched &&  email.errors?.['required']">    
+                        Email is required.                      
+                    </span>
+                    <span class="help-block" *ngIf="email.touched && email.errors?.['email']">
+                        Email is not in the right format.
+                    </span>
+                    
+                </div>
+                <div class="form-group mb-3">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" class="form-control rounded-1 mb-1" ngModel name="password"
+                    required #password="ngModel" minlength="5">
+                    <span class="help-block" *ngIf="password.touched && !password.valid">
+                        <span class="help-block" *ngIf="password.errors?.['required']">Password is required.</span>
+                        <span class="help-block" *ngIf="password.errors?.['minlength']">Password must be at least 5 characters long.</span>
+                    </span>
+                </div> 
+                
+                <p class="mt-5">Forgot password?</p>
+                <button type="submit" class="btn col-12 bg-white rounded-1" [disabled]="!loginForm.valid">Log In</button>
+            </form>
+        </div>
+    
+</div>
+
+
+

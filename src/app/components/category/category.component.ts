@@ -6,7 +6,7 @@ import { ProductService } from 'src/app/services/product.service';
   selector: 'app-category',
   templateUrl: './category.component.html',
   styleUrls: ['./category.component.css'],
-  providers: [ProductService]
+  
 })
 export class CategoryComponent implements OnInit {
  
@@ -21,8 +21,8 @@ export class CategoryComponent implements OnInit {
         this.routeChanged(params['category']);
       }
     )
-    let category = this.route.snapshot.params['category'];
-    this.currentProducts = this.productService.getProductbyCategory(category)      
+    // let category = this.route.snapshot.params['category'];
+    // this.currentProducts = this.productService.getProductbyCategory(category)      
   }
 
   routeChanged(category:string){

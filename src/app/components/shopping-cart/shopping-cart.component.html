@@ -1,0 +1,82 @@
+<div class="container shop-cart-empty" *ngIf="cartCurrent.length === 0">
+    <div class="row">
+        <div class="col-12 d-flex justify-content-center">
+            <h1 class="mt-5 fs-3">Shopping cart is empty</h1>
+        </div>
+    </div>
+</div>
+
+<div class="container cart-container mt-5 px-5" *ngIf="cartCurrent.length > 0">    
+    <div class="row" *ngFor="let c of cartCurrent">
+        <div class="col-lg-6 col-12">
+            <div class="row">
+                <div class="col-s-1 col-lg-3 col-4">
+                    <img src='{{c.selectedProduct.image}}' class="img img-fluid">            
+                </div>
+                <div class="col-s-11 col-lg-9 col-8">
+                    <p class="mt-1 mb-4">{{c.selectedProduct.name}}</p>
+                    <button id="{{c.selectedProduct.id}}" class="mt-2 remove-product" (click)="removeProduct(c.selectedProduct.id, c.quantity)">Remove</button>
+                </div>
+            </div>
+        </div> 
+        <div class="col-lg-6 col-12">  
+            <div class="row d-flex justify-content-end m-0">
+                <div class="d-flex col-7 flex-column">  
+                    <div class="col-12 d-flex justify-content-between">
+                        <div class="col-1">
+                            <p>{{c.selectedProduct.price}}$</p>
+                        </div> 
+                        <div class="col-1">
+                            <div >
+                                <input min="1" max="99" limit-to-max #quantity id="{{c.selectedProduct.id}}" value="{{c.quantity}}" (input)="onUpdatequantity($event)" type="number" oninput="validity.valid||(value='');">
+                            </div>
+                        </div>           
+                        <div class="col-1">
+                            <p >{{c.selectedProduct.price*c.quantity}}$</p>
+                        </div> 
+                    </div>
+                    <div class="col-12">
+                        <div class="col-12 text-md-center" *ngIf="getsubTotal()==0">
+                            <p class="mt-2 text-danger">Ordered quantity must be over 0!</p> 
+                        </div>
+                    </div>                            
+                </div>
+            </div>           
+        </div> 
+        <hr class="my-2">         
+    </div>
+    <div class="row">
+        <div class="col-6"></div>
+        <div class="col-12 col-md-6 d-flex justify-content-between">            
+                <p class="mb-0">Subtotal:</p>
+                <p class="mb-0">{{getsubTotal()}}$</p>            
+        </div>
+    </div>    
+    <div class="row">
+        <div class="col-6"></div>
+        <div class="col-12 col-md-6"> 
+            <div class="col-12 d-flex justify-content-between">           
+                <p class="mb-0">Shipping:</p>               
+                <p class="mb-0" *ngIf="getsubTotal()<100 && getsubTotal()>0">100$</p>   
+                <p class="mb-0" *ngIf="getsubTotal()>=100 || getsubTotal()==0">FREE$</p> 
+            </div> 
+            <hr class="m-0">                              
+        </div>       
+    </div>
+    <div class="row">
+        <div class="col-6"></div>
+        <div class="col-12 col-md-6">
+            <div class="col-12 d-flex justify-content-between"> 
+            <p class="mb-0">Total:</p>
+            <p class="mb-0" *ngIf="getsubTotal()<100">{{getGrandTotal()}}$</p>
+            <p class="mb-0" *ngIf="getsubTotal()>=100">{{getsubTotal()}}$</p>
+            </div>
+        </div>
+    </div>
+    <div class="row">    
+        <div class="col-12 d-flex justify-content-end">
+            <button class="btn btn-dark"  (click)="goToCheckout()">Checkout</button>
+        </div>
+    </div>
+    
+</div>

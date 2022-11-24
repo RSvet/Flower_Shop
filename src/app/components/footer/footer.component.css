@@ -4,6 +4,13 @@
 .footer{
     padding-top: 8px;
     padding-bottom: 8px;
+    height: 4vh;
     
 }
+
+@media (max-width: 992px){   
+    .footer{
+     height: 2vh;
+    }
+ }
 
