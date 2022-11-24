@@ -1,0 +1,60 @@
+<div class="container main-container">
+    <div class="row d-flex justify-content-center">
+       <div class="d-flex justify-content-center">
+            <form role="form" [formGroup]="checkOutForm" (ngSubmit)="onSubmit()" class="col-8 mt-4 mb-2">
+                <div class=" row d-flex justify-content-between">
+                    <div class="form-group form-floating mb-5">
+                        <input type="text" class="form-control" id="fname" placeholder="hold" name="firname" formControlName="firstname">
+                        <label for="fname" class="req">First Name<span>:</span></label>
+                        <span class="error-mgs" *ngIf="!checkOutForm.controls['firstname'].valid && checkOutForm.controls['firstname'].touched">
+                        First Name must be filled.</span>
+                    </div>
+                    <div class="form-group form-floating mb-5">
+                        <input type="text" class="form-control" id="lname" placeholder="hold"  name="lastname"  formControlName="lastname">
+                        <label for="lname" class="req">Last Name<span>:</span></label>
+                        <span class="error-mgs" *ngIf="!checkOutForm.controls['lastname'].valid && checkOutForm.controls['lastname'].touched">
+                            Last Name must be filled.</span>
+                    </div>
+                    <div class="form-group form-floating mb-5">
+                        <input type="email" class="form-control" id="e-mail" placeholder="hold"  name="email" formControlName="email">
+                        <label for="e-mail" class="req">Email address<span>:</span></label>
+                        <span class="error-mgs" *ngIf="checkOutForm.controls['email'].touched && checkOutForm.controls['email'].errors?.['required']">
+                            Email must be filled.</span>
+                        <span class="error-mgs" *ngIf="checkOutForm.controls['email'].errors?.['email']">Email is not in the right format.</span>
+                   
+                    </div>
+                    <div class="form-group form-floating mb-5">
+                        <input type="tel" class="form-control" id="phone" placeholder="hold"  name="phone" formControlName="phone">
+                        <label for="phone" class="req">Phone number<span>:</span></label>
+                        <span class="error-mgs" *ngIf="!checkOutForm.controls['phone'].valid && checkOutForm.controls['phone'].touched">
+                            Phone must be filled.</span>
+                    </div>
+                    <div class="form-group form-floating mb-5">
+                        <input type="text" class="form-control" id="address" placeholder="hold"  name="address" formControlName="address">
+                        <label for="address" class="req">Address<span>:</span></label>
+                        <span class="error-mgs" *ngIf="!checkOutForm.controls['address'].valid && checkOutForm.controls['address'].touched">
+                            Address must be filled.</span>
+                    </div>
+                    <div class="form-group form-floating mb-5">
+                        <textarea class="form-control" id="comment" placeholder="hold"  name="comment" formControlName="comment"></textarea>
+                        <label for="comment">Comment:</label>
+                    </div>
+                    <div class="form-group mb-5">  
+                        <label for="payment" class="req">Payment method<span>:</span></label>                    
+                        <select name="payment"  id="payment" class="form-control" formControlName="payment">
+                            <option value="creditcart">Credit Card</option>
+                            <option value="paypall">PayPall</option>
+                            <option value="delivery">Payment on Delivery</option>
+                        </select>
+                        <span class="error-mgs" *ngIf="!checkOutForm.controls['payment'].valid && checkOutForm.controls['payment'].touched">
+                            Payment method be filled.</span>
+                                         
+                    </div>
+                </div>
+             <div class="row justify-content-center">
+                <button type="submit"s class="btn btn-dark  conf-btn mb-4" [disabled]="!checkOutForm.valid" (click)="emptyCart()">Confirm</button>
+             </div>
+            </form>
+       </div>
+    </div>
+</div>

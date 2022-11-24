@@ -25,6 +25,7 @@
         </div>
     </div>
 </div>
+ 
 
 <div class="container" id="home_products_div">
     <div class="row">
@@ -104,7 +105,7 @@
     <div class="row">
         <button class="load btn btn-outline-secondary m-auto my-5" [routerLink]="['/shop', 'sympathy']">Load more</button>
     </div>
-</div> 
+</div>  
 
 <div class="container">
     <div class="row d-flex justify-content-between gap-4 gap-md-0">
@@ -128,38 +129,38 @@
             </div>
         </div>
         <div id="contact-form" class="col-md-7 d-flex flex-column">
-            <form role="form">
+            <form role="form" (ngSubmit)="onSubmit()" #contForm="ngForm">
                 <div class=" row d-flex justify-content-between">
                     <div class="form-group form-floating mb-2 col-md-6">
-                        <input type="text" class="form-control" id="floatingInput1" placeholder="hold">
+                        <input type="text" class="form-control" id="floatingInput1" placeholder="hold" ngModel name="name" required>
                         <label for="floatingInput1">Name</label>
                     </div>
                     <div class="form-group form-floating mb-2 col-md-6">
-                        <input type="email" class="form-control" id="floatingInput2" placeholder="hold">
+                        <input type="email" class="form-control" id="floatingInput2" placeholder="hold" ngModel name="email" required email>
                         <label for="floatingInput2">Email</label>
                     </div>
                 </div>
                 <div class="row">
                     <div class="form-group form-floating mb-2">
-                        <input type="tel" class="form-control" id="floatingInput3" placeholder="hold">
+                        <input type="tel" class="form-control" id="floatingInput3" placeholder="hold" ngModel name="subject" required>
                         <label for="floatingInput3">Subject</label>
                     </div>
                 </div>
                 <div class="row">
                     <div class="form-group form-floating mb-2">
-                        <textarea class="form-control" id="floatingInput4" placeholder="hold" style="height:90px; resize: none;"></textarea>
+                        <textarea class="form-control" id="floatingInput4" placeholder="hold" style="height:90px; resize: none;" ngModel name="message" required></textarea>
                         <label for="floatinInput4">Message</label>
                     </div>
                 </div>
                 <div class="row">
-                    <button id="send" type="button" class="btn btn-outline-dark m-auto send-btn px-2">SEND</button>
+                    <button id="send" type="submit" class="btn btn-outline-dark  m-auto send-btn px-2" [disabled]="!contForm.valid">SEND</button>
                 </div>
             </form>
             <div class="mt-5 col-12">
-                <form>
+                <form #newsletterForm = "ngForm">
                     <label class="mb-2">Get our newsletters</label><br>
-                    <input type="email" placeholder="Enter your email here" class="me-md-4 input-mail py-2 col-12 col-md-6">
-                    <button type="button" class="btn btn-dark mt-2 mb-3 m-md-0">Subscribe Now</button>
+                    <input type="email" name="e-mail" placeholder="Enter your email here" class="me-md-4 input-mail py-2 col-12 col-md-6" ngModel required email>
+                    <button type="submit" class="btn btn-dark mt-2 mb-3 m-md-0" [disabled]="!newsletterForm.valid">Subscribe Now</button>
                 </form>
             </div>
         </div>
@@ -170,8 +171,10 @@
         <div class="col-md-6 offer-part d-flex align-items-center">
             <div class="text-center m-auto">
                 <h2>Send Get Well Wishes</h2>
-                <p id="well-wish"class="lh-base">Brighten their recovery with beautiful florals, plants and gifts that will express your well wishes</p>
-                <button class="btn btn-secondary shop-button mt-2">SHOP GET WELL FLOWERS & GIFTS</button>
+                <div class="form-group">
+                    <p id="well-wish"class="lh-base">Brighten their recovery with beautiful florals, plants and gifts that will express your well wishes</p>
+                    <button class="btn btn-secondary shop-button mt-2">SHOP GET WELL FLOWERS & GIFTS</button>
+                </div>
             </div>
         </div>
         <div class="col-md-6 bouquet-part"></div>

@@ -1,0 +1,36 @@
+.main-container{
+    min-height: 89vh;
+}
+.form-control{
+    border-top:none!important;
+    border-left: none!important;
+    border-right: none!important;
+    border-bottom: 1px solid rgb(189, 184, 184);
+    border-radius: 0;    
+    
+}
+
+.form-control:focus{
+    box-shadow: 0 0 0 0.25rem rgb(255 255 255);
+    
+}
+.conf-btn{
+    border-radius: 0;
+    width: 200px;
+} 
+.req span:before{
+    content:"*";
+    color:red;
+}
+
+.error-mgs{
+    color: red;
+}
+
+
+@media (max-width: 992px){   
+    .main-container{
+        min-height: 90vh;
+    }
+ }
+   

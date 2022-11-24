@@ -25,14 +25,15 @@
             <p class="name fs-4">{{product.name}}</p>
             <p class="price fs-4">{{product.price}}$</p>
             <p class="description">{{product.description}}</p> 
+            
           </div> 
             <hr>
             <p class="mb-0 pb-1">Quantity</p>
-            <input class="mb-2 border rounded-1" type="number" min="0" #quantity> <br>
-            <button class="btn btn-dark add-cart" (click)="addToCart(quantity.value, product.id)">Add to cart</button>           
+            <input class="mb-2 border rounded-1" id="quant" type="number" min="1" #quantity [(ngModel)]="quantityField"> <br>
+            <button class="btn btn-dark add-cart" (click)="addToCart(quantity.value, product.id)">Add to cart</button> 
+            <p class="mt-2 text-danger">{{message}}</p>           
         </div>
       </div>  
     </div>
-    <div class="row second-row"></div>
-    
+    <div class="row second-row"></div>   
 </div>
