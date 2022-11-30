@@ -3,6 +3,7 @@ import { ActivatedRoute, Params } from '@angular/router';
 import { ProductService } from 'src/app/services/product.service';
 import { ShoppingService } from 'src/app/services/shopping.service';
 import { Router } from '@angular/router';
+import { Cart } from '../models/Cart';
 
 
 @Component({
@@ -16,6 +17,7 @@ export class ProductComponent implements OnInit {
   currentProd:{id:number, name:string, price: number, category: string, image: string, description: string}
   quantityField = "";
   message = "";
+  
   constructor(private route: ActivatedRoute, private productService: ProductService, private shoppingService: ShoppingService, private router: Router, ) 
   { }
 
@@ -46,17 +48,19 @@ export class ProductComponent implements OnInit {
     this.router.navigate(['/shop',category, idnx, name]);
   }
 
-  addToCart(quantity: string, id:number){
+  addToCart(quantity: number){
     if(+quantity<=0){
-      this.message = "Ordered quantity must be over 0."
-      
+      this.message = "Ordered quantity must be over 0."      
     }
     else{
-    this.shoppingService.add(this.currentProd, +quantity);
+    this.shoppingService.add(this.currentProd, quantity);
     this.message = ""
     }
     this.quantityField = "";
   }
+
+
+
 
 
  

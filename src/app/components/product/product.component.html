@@ -30,7 +30,7 @@
             <hr>
             <p class="mb-0 pb-1">Quantity</p>
             <input class="mb-2 border rounded-1" id="quant" type="number" min="1" #quantity [(ngModel)]="quantityField"> <br>
-            <button class="btn btn-dark add-cart" (click)="addToCart(quantity.value, product.id)">Add to cart</button> 
+            <button class="btn btn-dark add-cart" (click)="addToCart( +quantity.value)">Add to cart</button> 
             <p class="mt-2 text-danger">{{message}}</p>           
         </div>
       </div>  
