@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { __values } from 'tslib';
 
 
+
 @Component({
   selector: 'app-shopping-cart',
   templateUrl: './shopping-cart.component.html',
@@ -25,8 +26,21 @@ export class ShoppingCartComponent implements OnInit {
  
   ngOnInit(): void {
     
-   this.cartCurrent = this.shoppingService.cart;   
+   
+   this.getProducts(); 
    this.totalAmount = this.shoppingService.quantity;
+  }
+
+  getProducts(){
+     this.shoppingService.getCart()
+     .subscribe({
+      next: (cart) => {
+      this.cartCurrent = cart as Cart[];
+      console.log(cart); 
+       },
+       error: (err) => console.log(err)
+     })
+     
   }
   
   goToCheckout(){ 
@@ -36,17 +50,29 @@ export class ShoppingCartComponent implements OnInit {
 
   onUpdatequantity(event: Event){
     let total = 0;
+    //debugger;
     this.cartCurrent.forEach(element => {     
       if(element.selectedProduct.id==(+(<HTMLInputElement>event.target).id))       
-      element.quantity = (+(<HTMLInputElement>event.target).value);   
+     { element.quantity = (+(<HTMLInputElement>event.target).value); 
+      this.shoppingService.editQuantity(element).subscribe({
+        next: (response) => console.log("uspeh, editovan element u bazi"+element.selectedProduct.name+" nova kolicina: "+element.quantity),
+        error:(err) => console.log(err)
+      })   }
       total += element.quantity;
       this.shoppingService.returnQuantity(total);   
-     });  
-     
+     });     
   }
   
-  removeProduct(id: number, quantity:number){
-    this.shoppingService.remove(id, quantity);
+  removeProduct(id: number, quantity:number){    
+    this.shoppingService.deleteCartItem(id, quantity).subscribe({
+      next: () => {        
+        let index = this.cartCurrent.findIndex(function(c){return c.id == id});
+        if(index != -1){
+           this.getProducts();
+        }
+      },
+      error: (error) => console.log(error)
+    });    
   }  
 
   getsubTotal(){
@@ -54,8 +80,7 @@ export class ShoppingCartComponent implements OnInit {
     for (var i = 0; i < this.cartCurrent.length; i++) {
         
       total += this.cartCurrent[i].selectedProduct.price * this.cartCurrent[i].quantity;
-      this.totalAmount = total;
-        
+      this.totalAmount = total;        
     }
     return total;
 }
@@ -66,11 +91,6 @@ getGrandTotal(){
     return grandTotal = this.getsubTotal();
   }
   else{
-  return grandTotal = this.getsubTotal()+ 100;}
-  
-}
-
-
-  
-
+  return grandTotal = this.getsubTotal()+ 100;}  
+  }
 }

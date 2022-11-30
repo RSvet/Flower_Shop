@@ -1,0 +1,11 @@
+#orchid-about{
+    background-image: url('/assets/MACRO_PLP_BANNER.jpg');
+    background-position: center;
+    background-size: cover;
+    min-height: 450px; 
+    color: white;  
+}
+.mini-head{
+    font-size: 20px;
+    font-weight: 500;
+}

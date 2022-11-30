@@ -20,6 +20,10 @@ import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.
 import { ProductOrderComponent } from './components/product-order/product-order.component';
 import { ProductService } from './services/product.service';
 import { ShoppingService } from './services/shopping.service';
+import { AboutComponent } from './components/about/about.component';
+import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
+import { InMemoryCart } from './services/in-memory-cart';
+import { HttpClientModule } from '@angular/common/http';
 
 
 
@@ -37,7 +41,8 @@ import { ShoppingService } from './services/shopping.service';
     SignupComponent,
     ShoppingCartComponent,
     ProductOrderComponent,
-   
+    AboutComponent
+      
     
   ],
   imports: [
@@ -47,7 +52,12 @@ import { ShoppingService } from './services/shopping.service';
     MaterialModule,
     FontAwesomeModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule,
+    HttpClientInMemoryWebApiModule.forRoot(
+      InMemoryCart, {dataEncapsulation: false}
+    )
+
     
   ],
   providers: [ProductService, ShoppingService],
