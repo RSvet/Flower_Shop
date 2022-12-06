@@ -18,16 +18,26 @@
                     <a class="nav-link" [routerLink]="['/shop', 'sympathy']">Shop</a>                            
                 </li>
                 <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
-                    <a class="nav-link link-secondary" href="">Contact</a>                            
+                    <a class="nav-link link-secondary" routerLink="/" >Contact</a>                            
                 </li>
             </ul>               
         </div>
         <div>           
             <a class="user-shop-links"><fa-icon [icon]="faCircleUser" id="user-icon"></fa-icon></a>            
             <a class="user-shop-links me-2"><fa-icon [icon]="faCaretDown" id="arrow-down"></fa-icon></a>
-            <a class="user-shop-links me-2" [routerLink]="['/login']">Login</a>
+            <ng-template [ngIf]="!authService.isLoggedIn">
+                <a class="user-shop-links me-2" [routerLink]="['/login']">LogIn</a>
+            </ng-template>
+            <ng-template [ngIf]="authService.isLoggedIn">
+                <a class="user-shop-links me-2" (click)="signOut()">LogOut</a>
+            </ng-template>
             <a class="user-shop-links" [routerLink]="['/cart']"><fa-icon [icon]="faCartShopping" class="position-relative" id="shopping-cart"></fa-icon></a>
-            <span class="position-absolute top-5 translate-middle align-middle bg-secondary border border-light rounded-circle cart-badge">{{shoppingService.quantity}}</span>
+            <ng-template [ngIf]="authService.isLoggedIn">
+                <span class="position-absolute top-5 translate-middle align-middle bg-secondary border border-light rounded-circle cart-badge">{{shoppingService.quantity}}</span>
+            </ng-template>
+            <ng-template [ngIf]="!authService.isLoggedIn">
+                <span class="position-absolute top-5 translate-middle align-middle bg-secondary border border-light rounded-circle cart-badge">0</span>
+            </ng-template>
         </div>
     </div>
 </nav> 

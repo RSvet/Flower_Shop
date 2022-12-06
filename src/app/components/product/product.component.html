@@ -30,10 +30,27 @@
             <hr>
             <p class="mb-0 pb-1">Quantity</p>
             <input class="mb-2 border rounded-1" id="quant" type="number" min="1" #quantity [(ngModel)]="quantityField"> <br>
-            <button class="btn btn-dark add-cart" (click)="addToCart( +quantity.value)">Add to cart</button> 
+            <ng-template [ngIf]="authService.isLoggedIn">
+              <button class="btn btn-dark add-cart" (click)="addToCart( +quantity.value)">Add to cart</button>
+            </ng-template>
+            <ng-template [ngIf]="!authService.isLoggedIn">
+              <button class="btn btn-dark add-cart" (click)="openModal(+quantity.value)">Add to cart</button>
+            </ng-template>
             <p class="mt-2 text-danger">{{message}}</p>           
         </div>
-      </div>  
+      </div>   
+    </div>   
+    <div class="row second-row"></div>
+    <div class="backdrop" [ngStyle]="{'display':display}"></div>
+    <div class="modal mt-5" [ngStyle]="{'display':display}" id="loginModal"  tabindex="-1" aria-labelledby="loginModalLabel" role="dialog">
+      <div class="modal-dialog mt-5">
+        <div class="modal-content rounded-0 text-center mt-5">         
+          <div class="modal-body py-4">
+            <h1>WE WANT TO MEET YOU</h1>
+            <p>Please, Login to continue shopping on our site.</p>
+            <button class="btn btn-dark" [routerLink]="['/login']" data-bs-dismiss="modal">LOG IN</button>
+          </div>         
+        </div>
+      </div>
     </div>
-    <div class="row second-row"></div>   
 </div>

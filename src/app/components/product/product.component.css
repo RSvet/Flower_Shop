@@ -31,3 +31,24 @@ input{
 .description{
     font-size: 13px;
 }
+h1{
+    font-size: 25px;
+    font-weight: 500;
+    margin-bottom:10px;
+}
+.modal-content{
+    border: solid 2px black;
+}
+
+.backdrop{
+    background-color:rgba(117, 114, 114, 0.6);
+    position:fixed;
+    top:0;
+    left:0;
+    width:100vw;
+    height:100vh;
+    z-index: 2;
+    }
+
+
+
