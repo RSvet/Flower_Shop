@@ -1,5 +1,8 @@
 nav{
     min-height: 4vh;
+    position: relative;
+    z-index: 3;
+    
 }
 #flower-icon {
     width: 100px;
@@ -32,4 +35,5 @@ nav{
 .user-shop-links{
     color:rgb(24, 23, 23);
     text-decoration: none;
+    cursor: pointer;
 }

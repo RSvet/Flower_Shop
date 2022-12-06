@@ -50,7 +50,7 @@ export class ShoppingCartComponent implements OnInit {
 
   onUpdatequantity(event: Event){
     let total = 0;
-    //debugger;
+    
     this.cartCurrent.forEach(element => {     
       if(element.selectedProduct.id==(+(<HTMLInputElement>event.target).id))       
      { element.quantity = (+(<HTMLInputElement>event.target).value); 

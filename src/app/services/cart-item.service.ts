@@ -12,14 +12,10 @@ export class CartItemService {
   headers = new HttpHeaders().set('Content-Type', 'application/json');
 
 
-  // getCartItems(){
-  //   return this.httpClient.get("api/cart",{
-  //       headers: this.headers
-  //   });
-  // }
+
   
   addCartItem(cart: Cart){
-    // debugger;
+   
     return this.httpClient.post("api/cart", cart,{
       headers: this.headers
     })

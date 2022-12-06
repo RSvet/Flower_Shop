@@ -4,6 +4,7 @@ import { ProductService } from 'src/app/services/product.service';
 import { ShoppingService } from 'src/app/services/shopping.service';
 import { Router } from '@angular/router';
 import { Cart } from '../models/Cart';
+import { AuthService } from 'src/app/services/auth.service';
 
 
 @Component({
@@ -17,8 +18,8 @@ export class ProductComponent implements OnInit {
   currentProd:{id:number, name:string, price: number, category: string, image: string, description: string}
   quantityField = "";
   message = "";
-  
-  constructor(private route: ActivatedRoute, private productService: ProductService, private shoppingService: ShoppingService, private router: Router, ) 
+  display = "none";
+  constructor(private route: ActivatedRoute, private productService: ProductService, private shoppingService: ShoppingService, private router: Router, public authService: AuthService ) 
   { }
 
   ngOnInit(): void {
@@ -57,6 +58,14 @@ export class ProductComponent implements OnInit {
     this.message = ""
     }
     this.quantityField = "";
+  }
+
+  openModal(quantity: number){
+    if(+quantity>0){
+     this.display = "block"}
+     else{
+      this.message = "Ordered quantity must be over 0." 
+     }
   }
 
 

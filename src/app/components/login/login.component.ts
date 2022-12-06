@@ -1,5 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { stringLength } from '@firebase/util';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -8,13 +10,18 @@ import { NgForm } from '@angular/forms';
 })
 export class LoginComponent implements OnInit {
 
-  constructor() { }
+  constructor(private _authService: AuthService ) { }
   @ViewChild("loginForm") loginForm : NgForm;
   ngOnInit(): void {
+    
   }
 
-  onSubmit(){
-
+  login(email: string, password: string){
+    this._authService.signIn(email, password);
   }
+
+  
+
+  
 
 }

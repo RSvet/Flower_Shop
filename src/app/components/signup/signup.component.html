@@ -4,7 +4,7 @@
         <div class="mb-4">
             <h1 class="text-center signup-text mt-5 mb-2">Sign Up</h1>            
         </div>    
-        <form (ngSubmit)="onSubmit()" #signupForm ='ngForm'>
+        <form #signupForm ='ngForm'>
             <div class="form-group">
                 <label for="fname">First Name</label>
                 <input type="text" id="fname" class="form-control" ngModel name="fname" required minlength="5" #fname="ngModel">
@@ -45,11 +45,26 @@
             </div> 
             
             <p class="mt-5">Forgot password?</p>
-            <button type="submit" class="btn col-12 bg-white rounded-1" [disabled]="!signupForm.valid">Sign Up</button>
+            <button type="button" class="btn col-12 bg-white rounded-1" [disabled]="!signupForm.valid" (click)="signup(email.value, password.value)" (click)="openModal()">Sign Up</button>
+            
             <div class="text-center">
                 <span class="log-in-text">Already a member? <a [routerLink]="['/login']">Log in</a> </span>
             </div>
         </form>
     </div>
-
+    <div class="backdrop" [ngStyle]="{'display':display}"></div>
+    <div class="modal mt-5" [ngStyle]="{'display':display}" id="registerModal"  tabindex="-1" aria-labelledby="registerModalLabel"  role="dialog">
+        <div class="modal-dialog mt-5">
+          <div class="modal-content rounded-0 text-center mt-5">         
+            <div class="modal-body py-4 px-3">
+              <h1>Thank You for Registering</h1>
+              <p>We have sent a confirmation email to your email.</p>
+              <p>Please check your email and click on the link to verify your email address.</p>
+              <button class="btn btn-dark me-2" data-bs-dismiss="modal" (click)="sendVerificationEmail()">Resend Verification Email</button>
+              <!-- <button type="submit" class="btn btn-dark" [routerLink]="['/login']"  data-bs-dismiss="modal">Log in</button> -->
+              <a id="loginlink" href="/login"><button  class="btn btn-dark" data-bs-dismiss="modal">Log in</button></a>         
+            </div>         
+          </div>
+        </div>
+      </div>
 </div>
