@@ -2,7 +2,7 @@
 Online flower shop app
 ## Demo
 
-[Flower shop](https://flowershop-91e90.web.app/shop/sympathy)
+[Flower shop](https://flowershop-91e90.web.app/)
 
 ## Made with
 
