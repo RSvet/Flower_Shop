@@ -5,7 +5,6 @@ Online flower shop app
 [Flower shop](https://flowershop-91e90.web.app/)
 
 ## Made with
-
 - Html
 - Css
 - Bootstrap
